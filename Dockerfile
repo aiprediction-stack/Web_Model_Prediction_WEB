@@ -27,9 +27,10 @@ RUN apt-get update && \
 
 # 創建虛擬環境並安裝所有 Python 依賴到根目錄下的 /venv
 # 確保 Gunicorn 被安裝到這個 venv 中
-RUN python -m venv /venv && \
-    /venv/bin/pip install --upgrade pip && \
-    /venv/bin/pip install --no-cache-dir -r requirements.txt
+# 🚨 【修正點 1】將虛擬環境建立在 /app/venv，與最終階段的路徑保持一致
+RUN python -m venv /app/venv && \
+    /app/venv/bin/pip install --upgrade pip && \
+    /app/venv/bin/pip install --no-cache-dir -r requirements.txt
 
 
 # -----------------------------------------------------------
@@ -65,7 +66,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # 複製 BUILDER 階段安裝好的虛擬環境到 /app/venv
-COPY --from=builder /venv /app/venv
+# 🚨 【修正點 2】從 builder 複製時，路徑對應正確 (/app/venv 到 /app/venv)
+COPY --from=builder /app/venv /app/venv
 
 # 複製應用程式程式碼和模型檔案
 COPY . .
