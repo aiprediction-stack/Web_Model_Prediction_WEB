@@ -1,0 +1,39 @@
+Web_Learning_Model 專案操作手冊
+
+更新專案到 GitHub
+git status                                # 1️⃣ 檢查狀態
+git add .                                 # 2️⃣ 暫存修改
+git commit -m ""                          # 3️⃣ Commit
+git push                                  # 4️⃣ 推送到 GitHub
+
+背景顏色調整小工具(color_bg_control) 使用方法（任意頁面）
+引入 CSS：
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/color_bg_control.css') }}">
+引入 JS（放在 <body> 結尾）：
+    <script src="{{ url_for('static', filename='js/color_bg_control.js') }}"></script>
+
+專案操作手冊 - Web 模型預測平台
+放在桌面的路徑
+cd C:\Users\user\Desktop\Web_Model_Prediction
+
+安裝依賴:
+pip install -r requirements.txt
+
+啟動 Flask 應用程式:
+python app.py
+
+打開瀏覽器訪問：http://127.0.0.1:5000/
+服務將預設在 https://www.google.com/search?q=http://127.0.0.1:5000/ 運行。
+
+如果模型首次放入 需要訓練拿到權重
+
+cd C:\Users\user\Desktop\Web_Model_Prediction\projects\customer_churn_bank_code
+python customer_churn_bank_train.py
+python customer_churn_bank_shap.py
+
+這是 customer_churn_bank 所需要的重要欄位
+id CreditScore	Geography	Gender	Age	Tenure	Balance	NumOfProducts	HasCrCard	IsActiveMember	EstimatedSalary
+
+幫我更改 給我完整程式碼
+
+幫我處理UNICODE字元的問題
